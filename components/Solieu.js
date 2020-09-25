@@ -7,7 +7,6 @@ const Solieu = memo(() => {
 
     async function getSortedPostsData() {
         const res = await fetch('https://ssoc-next.solarbk.vn/backend/pvsofarapi/prototype/84843?Serial=01-C016-0920-0207').then(response => response.json()).then(data => setState(data));
-        console.log('xx');
     }
     useEffect(() => {
         // console.log('xxr');
@@ -21,7 +20,7 @@ const Solieu = memo(() => {
             {state &&
                 <div className="container  h-10 w-full m-auto px-8 mb-12 h-auto">
                     <div className="w-full text-center text-4xl text-blue-700 font-bold mt-8 pb-2 border-b-2 border-gray-300">
-                        <h1 className="m-auto">Dashboard EPEver Tracer</h1>
+                        <h1 className="m-auto">Dashboard SolarBK iLight30</h1>
                     </div>
                     <div className="grid grid-cols-5 gap-4 mt-8 text-base">
                         <div className="col-span-1   ">
