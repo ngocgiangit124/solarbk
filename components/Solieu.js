@@ -21,7 +21,7 @@ const Solieu = memo(() => {
     useEffect(() => {
         // console.log('xxr');
         getSortedPostsData();
-        const id = setInterval(() => { getSortedPostsData() }, 2000);
+        const id = setInterval(() => { getSortedPostsData() }, 30000);
         return () => clearInterval(id);
     }, [stateUrl]);
     // console.log(state && state.PowerRealTimeChart.DataChart);
