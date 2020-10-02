@@ -4,16 +4,26 @@ import ChartBt2 from './ChartBt2';
 const Solieu = memo(() => {
 
     const [state, setState] = useState(null);
+    const [stateUrlN, setStateUrlN] = useState('https://ssoc-next.solarbk.vn/backend/pvsofarapi/prototype/84843?Serial=01-C016-0920-');
+    const [stateUrl, setStateUrl] = useState('https://ssoc-next.solarbk.vn/backend/pvsofarapi/prototype/84843?Serial=01-C016-0920-0207');
+    const [stateActive, setStateActive] = useState('0207');
 
     async function getSortedPostsData() {
-        const res = await fetch('https://ssoc-next.solarbk.vn/backend/pvsofarapi/prototype/84843?Serial=01-C016-0920-0207').then(response => response.json()).then(data => setState(data));
+        const res = await fetch(stateUrl).then(response => response.json()).then(data => setState(data));
     }
+    function getSortedPostsData2(value) {
+        setStateUrl(stateUrlN + value);
+        setStateActive(value);
+    }
+    useEffect(() => {
+        getSortedPostsData();
+    }, [stateUrl])
     useEffect(() => {
         // console.log('xxr');
         getSortedPostsData();
-        const id = setInterval(() => { getSortedPostsData() }, 30000);
+        const id = setInterval(() => { getSortedPostsData() }, 2000);
         return () => clearInterval(id);
-    }, []);
+    }, [stateUrl]);
     // console.log(state && state.PowerRealTimeChart.DataChart);
     return (
         <>
@@ -21,6 +31,18 @@ const Solieu = memo(() => {
                 <div className="container  h-10 w-full m-auto px-8 mb-12 h-auto">
                     <div className="w-full text-center text-4xl text-blue-700 font-bold mt-8 pb-2 border-b-2 border-gray-300">
                         <h1 className="m-auto">Dashboard SolarBK iLight30</h1>
+                    </div>
+                    <div className="container m-auto mb-8 p-2">
+                        <div className="w-full flex justify-center font-bold">
+                            <div className={`py-1 px-4 cursor-pointer ${stateActive == '0207' ? 'active' : ''}`} onClick={(e) => getSortedPostsData2('0207')}>0920-0207</div>
+                            <div className={`py-1 px-4 cursor-pointer ${stateActive == '0202' ? 'active' : ''}`} onClick={(e) => getSortedPostsData2('0202')}>0920-0202</div>
+                            <div className={`py-1 px-4 cursor-pointer ${stateActive == '0209' ? 'active' : ''}`} onClick={(e) => getSortedPostsData2('0209')}>0920-0209</div>
+                            <div className={`py-1 px-4 cursor-pointer ${stateActive == '0205' ? 'active' : ''}`} onClick={(e) => getSortedPostsData2('0205')}>0920-0205</div>
+                            <div className={`py-1 px-4 cursor-pointer ${stateActive == '0210' ? 'active' : ''}`} onClick={(e) => getSortedPostsData2('0210')}>0920-0210</div>
+                            <div className={`py-1 px-4 cursor-pointer ${stateActive == '0201' ? 'active' : ''}`} onClick={(e) => getSortedPostsData2('0201')}>0920-0201</div>
+                            <div className={`py-1 px-4 cursor-pointer ${stateActive == '0204' ? 'active' : ''}`} onClick={(e) => getSortedPostsData2('0204')}>0920-0204</div>
+                            <div className={`py-1 px-4 cursor-pointer ${stateActive == '0208' ? 'active' : ''}`} onClick={(e) => getSortedPostsData2('0208')}>0920-0208</div>
+                        </div>
                     </div>
                     <div className="grid grid-cols-5 gap-4 mt-8 text-base">
                         <div className="col-span-1   ">

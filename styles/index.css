@@ -3,3 +3,9 @@
 @tailwind components;
 /* purgecss end ignore */
 @tailwind utilities;
+
+@layer components {
+    .active {
+        @apply  border-black border-b-2;
+    }
+}
